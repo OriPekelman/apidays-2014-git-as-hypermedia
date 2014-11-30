@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Ori Pekelman" />
+  <title>Platform.sh Git (and/as) Hypermedia</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.min.css"/>
+    <style type="text/css">code{white-space: pre;}</style>
+    <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Platform.sh Git (and/as) Hypermedia</h1>
+    <h2 class="author">Ori Pekelman</h2>
+    <h3 class="date">APIDays Global, Paris, Dec 4th 2014</h3>
+</section>
+
+<section class="slide level1">
+
+<style> body{background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: -100; background: url() no-repeat;background-size: cover; }.reveal h1 {font-size: 2.77em;}  .reveal .slides {text-align: left !important;}</style>
+<p>Hello, I am Ori Pekelman, everywhere <span class="citation" data-cites="OriPekelman">@OriPekelman</span> I consult companies on their software strategy. I co-organize #ParisDataGeeks and #FunctionalProgrammersParis and I am before you today as one of the co-founders of Commerce Guys that created #platformsh</p>
+</section>
+<section id="silver-shoes" class="slide level1">
+<h1>Silver Shoes</h1>
+<p>Our job in life is creating silver bullets that fit any foot, right?</p>
+<p>We call these conferences API conferences but really its all about CRUD oriented JSONy REST right? With the cool boyz telling you its all about hypermedia.</p>
+<p>If you haven't caught up yet its about: Affordance (discoverability), Developer Experience, Reducing Client maintenance cost, Reducing migration headaches.. so its good and we should always use it for everything? We'll see about that.</p>
+</section>
+<section id="http-as-defined-in-wikipedia" class="slide level1">
+<h1>HTTP as defined in Wikipedia</h1>
+<p>The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems.</p>
+<p>Now this doesn't look at all like whatever we are doing right now, right? When we say do APIs and we, say, create JSON over HTTP interfaces (JSON being not extremely hypertext friendly as a specification.... ) we are miles away from the definition of HTTP or even its design goals</p>
+</section>
+<section id="so-what-are-these-api-things-theyre-talking-about" class="slide level1">
+<h1>So, what are these API things they're talking about</h1>
+<p>And, if we go to the definition of API, either Advanced Programming Interface or Application programming interface. This seems to be a whole different level, a different abstraction then whatever HTTP is...; An API is a way for one program to program another one. To access it. To mechanize it. It is nothing more then a method to invoke a method on an object. Or to be more late 2014... a way to pass an argument to a function.</p>
+</section>
+<section id="the-usefulness-of-rest" class="slide level1">
+<h1>The usefulness of REST</h1>
+<p>The reason we are talking to you guys so much about REST is that in real world applications we have discovered that the HTTP model represents an excellent tradeoff as a kind of universal middleware for invoking <em>remote</em> functions. That is has extremely beneficial side effects in terms of system architecture, as it forces developers to think in strongly decoupled, concurrent, fail-tolerant systems. We like the universality of HTTP. We like the simplicity. And we like the fact we have the probably hugest human infrastructure ever that just exclusively with doing this HTTP thing efficiently.</p>
+</section>
+<section id="everything-has-semantics." class="slide level1">
+<h1>Everything has semantics.</h1>
+<p>What does that phrase mean? it means everything has meaning in it. Everything communicates a worldview. Ideas about the world. Your program has concepts, and it tries to call another program that has other concepts through an intermediary protocol that has its own.</p>
+</section>
+<section id="people-who-care-about-semantics-yell-a-lot" class="slide level1">
+<h1>People who care about semantics yell a lot</h1>
+<p>Think about how many times you were yelled at by an API expert/evangelist because &quot;your API does not respect HTTP semantics!&quot; Idempotency! POST is not PATCH which is not PUT you nitwit! This should be &quot;203 Non-Authoritative Information&quot; not &quot;200 OK&quot; ... and the such..</p>
+</section>
+<section id="apis-are-bridges" class="slide level1">
+<h1>APIs are bridges</h1>
+<p>APIs need to bridge gaps between the semantics of two different systems. When we use a middleware representation such as JSON over HTTP it means the semantics are translated twice. So what is usually means is the following conversation :</p>
+</section>
+<section id="lost-in-translation-app1---api--app2" class="slide level1">
+<h1>Lost in translation APP1 --&gt;API--&gt;APP2</h1>
+<p>Reading would be:</p>
+<pre><code>World View 1 --&gt; World View 1 as represented as Json over HTTP --&gt; World View 1 as represented in World View 2 </code></pre>
+<p>And writing would be:</p>
+<pre><code>World View 2 --&gt; World View 2 as represented as Json over HTTP --&gt; World View 2 as represented in World View 1</code></pre>
+</section>
+<section id="the-ol-double-google-translate-trick" class="slide level1">
+<h1>The 'Ol double google translate trick</h1>
+<p>Now lets do the trick to pass the preceding slide twice through google translate (English-&gt;French-&gt;English) which gives us:</p>
+</section>
+<section id="lost-in-translation-en--fr--en" class="slide level1">
+<h1>Lost in translation EN--&gt;FR--&gt;EN</h1>
+<p>Reading will be:</p>
+<pre><code>  View in 1 -&gt; World View 1 as represented as JSON over HTTP -&gt; World View 1 as represented in View 2</code></pre>
+<p>Will wrote:</p>
+<pre><code>  View the world 2 -&gt; World View 2 as represented about JSON HTTP -&gt; World View 2 as represented in View 1</code></pre>
+<p>Not bad at all right? we have some type issues (1 became One, an instance became a class World View 2 to World View etc..). In our case French served as the intermediary representation. ##Now lets use the same trick with Hebrew! #Lost in translation EN--&gt;HE--&gt;EN View in 1 -&gt; World View 1 as represented as JSON over HTTP -&gt; World View 1 as represented in View 2 And View the world 2 -&gt; World View 2 as represented about JSON HTTP -&gt; World View 2 as represented in View 1</p>
+<p>Well here we are totally broken right? this is not going to work. The semantics of the intermediary system matter. It represents the total Impedance of the system (you know the function over reactance and resistance).</p>
+</section>
+<section id="what-is-a-thing" class="slide level1">
+<h1>What is a thing?</h1>
+<p>Now lets look at a very important thing in semantics which is &quot;Ontological&quot;, how do you determine what a thing &quot;is&quot;, its &quot;identity function&quot;. Through two classes of underlying technologies that could be uses as an API:</p>
+<p>In the semantics of HTTP, as an hypermedia system an object, a thing in the world is the address of the thing. In the semantics of GIT, as an content addressable system a thing in the world is a function over its content.</p>
+<p>By the way, this is one reason for which often enough you will see in Hypermedia APIS that an object's serialization will include a &quot;self&quot; relation, which will be a URL.</p>
+</section>
+<section id="talking-about-things-in-git" class="slide level1">
+<h1>Talking about things in Git</h1>
+<p>Referencing things is even more important. A thing referenced in git, being referenced by its real content, will always be at byte-level the &quot;same&quot;. If the thing has evolved, it will have a new address, and we will need to update the reference to it in another object &quot;the tree&quot; that will, by itself will be known by the hash of its content. We has a very strict sense of change here.</p>
+</section>
+<section id="talking-about-things-in-http" class="slide level1">
+<h1>Talking about things in HTTP</h1>
+<p>Referencing in HTTP is totally different, when we use an href, a &quot;link&quot; in programming terms we have something like a &quot;promise&quot; a local representation of a remote function call where the server:port part represents the function and the rest of the URL with its query string represent the arguments to the function. But these are not &quot;pure&quot; functions. Every time we call it we might get a different response. In most cases we won't even be calling the same &quot;function&quot; dependent on oh, so many factors, as we have an enormous stack of technologies to control and represent this changing over time (HTTP caching... and who really returns &quot;203 Non-Authoritative Information&quot;).</p>
+<p>So, when a thing references another thing in HTTP it does so through a link, saying this remote system, if you ask it for a &quot;resource&quot; with certain parameters will give you the thing.</p>
+</section>
+<section id="rest-hypermedia-should-be-your-default" class="slide level1">
+<h1>REST Hypermedia should be your default</h1>
+<p>This is just fine, not only fine, wonderful, in most use-cases. Which is why you should totally default to a RESTful hypermedia implementation using if possible someone else's standard for it (hint: http://jsonapi.org).</p>
+<p>... but sometimes what &quot;gets lost in translation&quot; the fact of having HTTP semantics in the middle is going to present some very important challenges and some very awkward implementations. Enough theory. Let's go real world on this.</p>
+</section>
+<section id="test-on-a-real-world-example-a-paas" class="slide level1">
+<h1>Test on a real-world example, a PAAS</h1>
+<p>We said, an API is a way to call a function on a program.</p>
+<p>Let's imagine the software on which we want to call methods on is a PAAS (a platform as a service). Meaning software that should be able to run any other software (The ultimate meta-shit). Now, would we want the invocation system in the middle, our middleware semantics to be something that might have different meanings, different answers depending on the weather? Surely not.</p>
+</section>
+<section id="in-order-for-a-program-to-be-able-to-run-any-other-program-it-must-be-totally-predictable-absolutely-repeatable." class="slide level1">
+<h1>In order for a program to be able to run any other program it must be totally predictable, absolutely repeatable.</h1>
+</section>
+<section id="software-is-change" class="slide level1">
+<h1>Software is change</h1>
+<p>But lets also take into account that software does want to change over time. We want to be able to add new features right? A guaranty of &quot;sameness&quot; is not enough.</p>
+<p>And when you consider these days an application is not just a single app server that is self contained, but a real-world application is a whole infrastructure. With multiple application servers, databases, caches, message queues.. and data, files etc.. This is means repeatability is becoming non trivial. Because we are not dealing with pure functions with no side effects, but on the contrary something that is extremely state heavy. The stateless HTTP protocol with its dangling &quot;promises&quot; is not only unhelpful here it is going to hinder us greatly.</p>
+</section>
+<section id="git-semantics-are-great-for-change" class="slide level1">
+<h1>Git Semantics are great for change</h1>
+<p>But Git semantics, for this, are really really great; We want a system with this precise state (which means a graph of objects that have known contents) and we want to mutate just a single element which should yield a new &quot;object&quot; with just this difference.</p>
+</section>
+<section id="the-platform.sh-git-api" class="slide level1">
+<h1>The platform.sh Git API</h1>
+<p>So in http://platform.sh the API is git. And everything is represented in git concepts.</p>
+<p>When you do in http://platform.sh</p>
+<p><code>git checkout -b &quot;new_cool_feature&quot;</code></p>
+<p>tapety tap tap tap ... code ... code ... code ... tapety tap tap ... add a search engine ...</p>
+<p><code>git push origin &quot;new_cool_feature&quot;</code></p>
+</section>
+<section id="like-http-git-can-be-a-protocol" class="slide level1">
+<h1>Like HTTP Git can be a protocol</h1>
+<p>You just used the git protocol, but precisely like with an HTTP API where when you do a &quot;PUT&quot; you are not PUTTING a file on a static WEBDAV server, but manipulating calling a function on an application server, invoking a method with specific semantics, here you will be talking to an application server (which is a highly consistent distributed Pythonian object framework) and telling it &quot;I want to clone an existing infrastructure apply a set of changes and create a new one with just these changes&quot;.</p>
+</section>
+<section id="clone..-your-infrastructure" class="slide level1">
+<h1>Clone.. your infrastructure</h1>
+<p>So platform.sh will do just that; It will take the running application cluster, get a state representation of every single element in it (again represented as a hash of its content), and create a new application cluster with just the changes (basically mutating just the tree of references to these objects known by their content). Because of this, because everything that is the &quot;same&quot; stays the same, this operation is incredibly fast; We can clone a running application, composed of multiple machines, with its databases and caches and what not, in under 30 seconds.</p>
+<p>This doesn't mean, good heavens, we dump and commit the gigabytes of content of the database into a git server, madness, no it means we are leveraging the semantics of git. What our &quot;git&quot; server represents is not the application code, but the whole infrastructure that will run it. With the data.</p>
+</section>
+<section id="why-are-these-git-semantics-useful" class="slide level1">
+<h1>Why are these Git semantics useful?</h1>
+<p>From a developer's point of view this means he can test in isolation a single feature branch, knowing that only this and nothing else changed. That there are no more &quot;dev&quot; and &quot;staging&quot; servers, which are unholy mixtures of broken code, hot-fixes and the next-release branches. It means staging servers become as disposable as topic branches.</p>
+<p>From a sysadmin's point of view this means all builds are repeatable. There are no &quot;production only bugs&quot;. And if it works on staging it will on production, because they will be the same.</p>
+<p>When you want to inspect the history, the whole history of your production system, every single change that was ever made to it. Well <code>git log</code>.</p>
+</section>
+<section id="its-an-api-not-an-application-the-app-is-behind" class="slide level1">
+<h1>Its an API not an application, the app is behind</h1>
+<p>Using a protocol that has semantics that marry well our domain makes for the API to be so much easier to understand <code>git push origin &quot;new_cool_feature&quot;</code> doesn't mean precisely what you'd expect it to ... because you are used to git as being an API to just store code, but understanding what it does here is easy.... (Hey, with webhooks we already use it to do other stuff right? You expect it also to run tests on Travis, or post a message on Hipchat.)</p>
+</section>
+<section id="but-as-we-said-no-silver-bullets.-cant-we-get-some-rest" class="slide level1">
+<h1>But as we said, no silver bullets. Can't we get some REST?</h1>
+<p>But.. you might say, &quot;great guys this is nifty and cool but as a developer I really, really don't want to have to deal with a complex system such as git, and I don't want to know what it means to rebase an application cluster&quot;. This will be true. Because an API is as much about having clear, efficient, semantics, as it is about ease of use and discoverability. APIs are not perfect, they are perfect for a use case. And making a dashboard that will iterate over stuff from this representation... is well, just not practical. Making a web page that directly speaks git in the browser.... well Tim Caswell (creationix) did just that (https://github.com/creationix/js-git) but well.. this is going to be awkward.</p>
+</section>
+<section id="remember-my-double-whammy-lets-put-a-rest-hypermedia-proxy" class="slide level1">
+<h1>Remember my double whammy? Let's put a REST Hypermedia proxy</h1>
+<p>So of course we also expose a Hypermedia API. It represents precisely the same thing; So when you PUT, what will happen is really a <code>commit</code> or a <code>branch</code> depending on the object you are manipulating. So basically now, you can do whatever you could through git.. also through a REST API. But because this is just a wrapper, a proxy on top of the Git protocol.. it means you are doing it with clear, correct semantics.</p>
+</section>
+<section id="how-does-the-hypermedia-look-like-here" class="slide level1">
+<h1>How does the Hypermedia look like here?</h1>
+<p>We try to apply the &quot;principle of least surprise and maximum immediate joy&quot;. So <code>GET https://eu.platform.sh/api/projects</code> will give you in a single request the list of your projects, with all the data you need, and the next steps you can take in a convenient bundle.</p>
+<pre><code>[{
+    &quot;id&quot;: &quot;jrq5lx44wtatm&quot;,
+    &quot;_links&quot;: { 
+                &quot;self&quot;:  { &quot;href&quot;: &quot;/api/projects/jrq5lx44wtatm&quot;},
+        &quot;#edit&quot;: { &quot;href&quot;: &quot;/api/projects/jrq5lx44wtatm&quot;},
+                &quot;#ui&quot;:   { &quot;href&quot;: &quot;https://eu.platform.sh/#/projects/jrq5lx44wtatm&quot;},
+        &quot;#manage-domains&quot;: { &quot;href&quot;: &quot;/api/projects/jrq5lx44wtatm/manage-domains&quot;},
+        &quot;#manage-access&quot;: { &quot;href&quot;: &quot;/api/projects/jrq5lx44wtatm/manage-access&quot;}
+    },
+    &quot;status&quot;: {
+      &quot;message&quot;: &quot;ok&quot;,
+      &quot;code&quot;: &quot;provisioned&quot;
+    },
+    &quot;repository&quot;: {
+      &quot;url&quot;: &quot;jrq5lx44wtatm@git.eu.platform.sh:jrq5lx44wtatm.git&quot;,
+      &quot;client_ssh_key&quot;: &quot;ssh-rsa AAAA[...]XdHaaj0]SPwZ jrq5lx44wtatm@platform&quot;},
+    &quot;title&quot;: &quot;Sonata&quot;,
+    &quot;created_at&quot;: &quot;2014-11-13T09:31:31.368000+00:00&quot;,
+    &quot;updated_at&quot;: &quot;2014-11-21T15:44:19.666000+00:00&quot;,
+    &quot;default_domain&quot;: null,
+    &quot;owner&quot;: &quot;766e306d-0f9a-4d38-b22f-cc6c5f070a14&quot;,
+    &quot;subscription&quot;: {
+      &quot;user_licenses&quot;: 5,
+      &quot;restricted&quot;: false,
+      &quot;included_users&quot;: 1,
+      &quot;storage&quot;: 15360,
+      &quot;environments&quot;: 9,
+      &quot;license_uri&quot;: &quot;https://marketplace.commerceguys.com/api/platform/licenses/7239&quot;,
+      &quot;plan&quot;: &quot;standard&quot;,
+      &quot;suspended&quot;: false,
+      &quot;subscription_management_uri&quot;: &quot;https://marketplace.commerceguys.com/user/7/orders&quot;
+    }
+  }, {
+    &quot;id&quot;: &quot;wawm7pg7grgew&quot;,
+    [&quot;...&quot;]
+  }, {
+    &quot;id&quot;: &quot;thpgd2cdvbpm6&quot;,
+    [&quot;...&quot;]
+  }
+}]</code></pre>
+</section>
+<section id="bridging-the-impedance-mismatch" class="slide level1">
+<h1>Bridging the impedance mismatch</h1>
+<p>And we try to bridge the semantics.. git is a statefull connected protocol. While HTTP is a stateless one.. so for example how would you go around handling Long-running operations ?</p>
+<p>To keep the API reactive, we handle those with a simple protocol: when an operation is long running, we return <code>202 Accept</code> and a link to an activity resource::</p>
+<pre><code>Status: 202 Accept
+Location: https://eu1.c-g.io/activity/xxxxxxxxxxx</code></pre>
+<p>The activity resource will be polled by the client (or watched through Event Source) and will contain the information about the progress of the task::</p>
+<pre><code>{
+    // [...]
+
+    &quot;status&quot;: {
+        // Is the operation complete (true/false)?
+        &quot;completed&quot;: false,
+        // Progress of the operation in percent.
+        &quot;progress&quot;: 8
+    }
+}</code></pre>
+<p>At the end of the processing, the activity will be updated with either a failure state::</p>
+<pre><code>{
+    // [...]
+
+    &quot;status&quot;: {
+        // Is the operation complete (true/false)?
+        &quot;completed&quot;: true,
+        // Progress of the operation in percent.
+        &quot;progress&quot;: 100,
+        &quot;result&quot;: &quot;failure&quot;,
+        &quot;result message&quot;: &quot;Failed to create resource.&quot;,
+        &quot;result data&quot;: {
+            &quot;xxxx&quot;: &quot;yyyyy&quot;
+        }
+    }
+}</code></pre>
+<p>or a success state::</p>
+<pre><code>{
+    // [...]
+
+    &quot;status&quot;: {
+        // Is the operation complete (true/false)?
+        &quot;completed&quot;: true,
+        // Progress of the operation in percent.
+        &quot;progress&quot;: 100,
+        &quot;result&quot;: &quot;success&quot;,
+        &quot;result message&quot;: &quot;Project {{name}} created successfully.&quot;,
+        &quot;result data&quot;: {
+            &quot;xxxx&quot;: &quot;yyyyy&quot;
+        }
+    }
+}</code></pre>
+</section>
+<section id="nuff-talk-show-us" class="slide level1">
+<h1>NUFF' Talk Show Us!</h1>
+<p>Let's see this in action. <Simple Demo, where we push a commit an see stuff happening on UI in realtime></p>
+<p>So... think well on the semantics of your API, default to REST/hypermedia, but if needed don't be ashamed to leverage other protocols and technologies with a specific API... later when you wrap it in a REST one.. the design of this one ... will be much, much better.</p>
+<p>AND.. if ever you wanted a PAAS that can generate a staging server in 30 seconds, check us out. Or.. if it sounds cool and you like GoLang and Python... we are hiring...</p>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: 'night', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+  <video  autoplay width="320" height="240"  id="bgvid">
+  <source src="/Users/oripekelman/Downloads/Grimm.S04E06.HDTV.x264-LOL.mp4">
+</video>
+  </body>
+</html>

@@ -46,6 +46,7 @@ $endif$
 $for(header-includes)$
     $header-includes$
 $endfor$
+<style> body{background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: -100; background: url() no-repeat;background-size: cover; }.reveal h1 {font-size: 2.77em;}  .reveal .slides {text-align: left !important;}</style>
 </head>
 <body>
 $for(include-before)$

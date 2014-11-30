@@ -1,7 +1,6 @@
 % Platform.sh Git (and/as) Hypermedia
 % Ori Pekelman
 % APIDays Global, Paris, Dec 4th 2014
-<style> body{background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: -100; background: url() no-repeat;background-size: cover; }.reveal h1 {font-size: 2.77em;}  .reveal .slides {text-align: left !important;}</style>
 Hello, I am Ori Pekelman, everywhere @OriPekelman I consult companies on their software strategy. I co-organize #ParisDataGeeks and #FunctionalProgrammersParis and I am before you today as one of the co-founders of Commerce Guys that created #platformsh
 
 #Silver Shoes

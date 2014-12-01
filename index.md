@@ -54,11 +54,15 @@ Will wrote:
 
 Not bad at all right? we have some type issues (1 became One, an instance became a class World View 2 to World View etc..). In our case French 
 served as the intermediary representation. 
-##Now lets use the same trick with Hebrew!
+
+**Now lets use the same trick with Hebrew!**
+
 #Lost in translation EN-->HE-->EN
-View in 1 -> World View 1 as represented as JSON over HTTP -> World View 1 as represented in View 2
+
+    View in 1 -> World View 1 as represented as JSON over HTTP -> World View 1 as represented in View 2
 And
-View the world 2 -> World View 2 as represented about JSON HTTP -> World View 2 as represented in View 1
+
+    View the world 2 -> World View 2 as represented about JSON HTTP -> World View 2 as represented in View 1
 
 Well here we are totally broken right? this is not going to work. The semantics of the intermediary system matter. It represents the total Impedance of the system (you know the function over reactance and resistance).
 

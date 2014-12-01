@@ -24,6 +24,7 @@
     <!--[if lt IE 9]>
     <script src="reveal.js/lib/js/html5shiv.js"></script>
     <![endif]-->
+<style> body{#background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: 0; background: transparent url() no-repeat;background-size: cover; } .reveal h1 {font-size: 2.77em; z-index:999} .reveal p { z-index:-999}  .reveal .slides {text-align: left !important;}</style>
 </head>
 <body>
   <div class="reveal">
@@ -37,7 +38,6 @@
 
 <section class="slide level1">
 
-<style> body{background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: -100; background: url() no-repeat;background-size: cover; }.reveal h1 {font-size: 2.77em;}  .reveal .slides {text-align: left !important;}</style>
 <p>Hello, I am Ori Pekelman, everywhere <span class="citation" data-cites="OriPekelman">@OriPekelman</span> I consult companies on their software strategy. I co-organize #ParisDataGeeks and #FunctionalProgrammersParis and I am before you today as one of the co-founders of Commerce Guys that created #platformsh</p>
 </section>
 <section id="silver-shoes" class="slide level1">
@@ -88,7 +88,12 @@
 <pre><code>  View in 1 -&gt; World View 1 as represented as JSON over HTTP -&gt; World View 1 as represented in View 2</code></pre>
 <p>Will wrote:</p>
 <pre><code>  View the world 2 -&gt; World View 2 as represented about JSON HTTP -&gt; World View 2 as represented in View 1</code></pre>
-<p>Not bad at all right? we have some type issues (1 became One, an instance became a class World View 2 to World View etc..). In our case French served as the intermediary representation. ##Now lets use the same trick with Hebrew! #Lost in translation EN--&gt;HE--&gt;EN View in 1 -&gt; World View 1 as represented as JSON over HTTP -&gt; World View 1 as represented in View 2 And View the world 2 -&gt; World View 2 as represented about JSON HTTP -&gt; World View 2 as represented in View 1</p>
+<p>Not bad at all right? we have some type issues (1 became One, an instance became a class World View 2 to World View etc..). In our case French served as the intermediary representation.</p>
+<p><strong>Now lets use the same trick with Hebrew!</strong></p>
+</section>
+<section id="lost-in-translation-en--he--en" class="slide level1">
+<h1>Lost in translation EN--&gt;HE--&gt;EN</h1>
+<p>View in 1 -&gt; World View 1 as represented as JSON over HTTP -&gt; World View 1 as represented in View 2 And View the world 2 -&gt; World View 2 as represented about JSON HTTP -&gt; World View 2 as represented in View 1</p>
 <p>Well here we are totally broken right? this is not going to work. The semantics of the intermediary system matter. It represents the total Impedance of the system (you know the function over reactance and resistance).</p>
 </section>
 <section id="what-is-a-thing" class="slide level1">
@@ -291,8 +296,13 @@ Location: https://eu1.c-g.io/activity/xxxxxxxxxxx</code></pre>
 //          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 ]});
     </script>
-  <video  autoplay width="320" height="240"  id="bgvid">
-  <source src="/Users/oripekelman/Downloads/Grimm.S04E06.HDTV.x264-LOL.mp4">
-</video>
+  <video  width="320" height="240" id="bgvid"> <source src="cat.webm"></video>
+<script>
+window.setTimeout(function() {
+var v = document.getElementsByTagName("video")[0];v.play();}, 30000);
+
+
+
+</script>
   </body>
 </html>

@@ -46,7 +46,7 @@ $endif$
 $for(header-includes)$
     $header-includes$
 $endfor$
-<style> body{background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: -100; background: url() no-repeat;background-size: cover; }.reveal h1 {font-size: 2.77em;}  .reveal .slides {text-align: left !important;}</style>
+<style> body{#background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: 0; background: transparent url() no-repeat;background-size: cover; } .reveal h1 {font-size: 2.77em; z-index:999} .reveal p { z-index:-999}  .reveal .slides {text-align: left !important;}</style>
 </head>
 <body>
 $for(include-before)$
@@ -105,8 +105,13 @@ $body$
   $for(include-after)$
   $include-after$
   $endfor$
-<video  autoplay width="320" height="240"  id="bgvid">
-  <source src="/Users/oripekelman/Downloads/Grimm.S04E06.HDTV.x264-LOL.mp4">
-</video>
+<video  width="320" height="240" id="bgvid"> <source src="cat.webm"></video>
+<script>
+window.setTimeout(function() {
+var v = document.getElementsByTagName("video")[0];v.play();}, 30000);
+
+
+
+</script>
   </body>
 </html>

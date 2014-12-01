@@ -16,7 +16,8 @@ If you haven't caught up yet its about:
 Affordance (discoverability), Developer Experience, Reducing Client maintenance cost, Reducing migration headaches.. so its good and we should always use it for everything? We'll see about that.
 
 #HTTP as defined in Wikipedia
-    The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems.
+    The Hypertext Transfer Protocol (HTTP) is an application protocol
+    for distributed, collaborative, hypermedia information systems.
 
 Now this doesn't look at all like whatever we are doing right now, right? When we say do APIs and we, say, create JSON over HTTP interfaces (JSON being not extremely hypertext friendly as a specification.... )  we are miles away from the definition of HTTP or even its design goals
 
@@ -111,11 +112,11 @@ So in http://platform.sh the API is git. And everything is represented in git co
 
 ###When you do in http://platform.sh 
 
-`git checkout -b "new_cool_feature"`
+    git checkout -b "new_cool_feature"
 
 tapety tap tap tap ... code ... code ... code ... tapety tap tap ... add a search engine ...
 
-`git push origin "new_cool_feature"`
+    git push origin "new_cool_feature"
 
 #Like HTTP Git  can be a protocol
 

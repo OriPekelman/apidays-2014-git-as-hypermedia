@@ -25,7 +25,7 @@
     <script src="reveal.js/lib/js/html5shiv.js"></script>
     <![endif]-->
 <style> body{#background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: 0; background: transparent url() no-repeat;background-size: cover; } .reveal h1 {font-size: 2.77em; z-index:999} .reveal pre, .reveal code {font-size:100%; line-height:100%} 
- .reveal p { z-index:-999}  .reveal .slides {text-align: left !important;} .show {  visibility: visible !important;  opacity: 0.9 !important;  transition: visibility 0s 4s, opacity 4s linear !important;} .hide {opacity: 0 !important;  transition: visibility 4s 7s, opacity 5s linear !important;}</style>
+ .reveal p { z-index:-999}  .reveal .slides {text-align: left !important;} .show {  visibility: visible !important;  opacity: 0.9 !important;  transition: visibility 0s 4s, opacity 4s linear !important;} .hide {opacity: 0 !important;  transition: visibility 4s 7s, opacity 5s linear !important;} #current-slide .hide {opacity: 1 !important; }</style>
 </head>
 <body>
   <div class="reveal">
@@ -51,7 +51,8 @@
 </section>
 <section id="http-as-defined-in-wikipedia" class="slide level1">
 <h1>HTTP as defined in Wikipedia</h1>
-<pre><code>The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems.</code></pre>
+<pre><code>The Hypertext Transfer Protocol (HTTP) is an application protocol
+for distributed, collaborative, hypermedia information systems.</code></pre>
 <p>Now this doesn't look at all like whatever we are doing right now, right? When we say do APIs and we, say, create JSON over HTTP interfaces (JSON being not extremely hypertext friendly as a specification.... ) we are miles away from the definition of HTTP or even its design goals</p>
 </section>
 <section id="so-what-are-these-api-things-theyre-talking-about" class="slide level1">
@@ -149,9 +150,9 @@ Will wrote:
 <h1>The platform.sh Git API</h1>
 <p>So in http://platform.sh the API is git. And everything is represented in git concepts.</p>
 <h3 id="when-you-do-in-httpplatform.sh">When you do in http://platform.sh</h3>
-<p><code>git checkout -b &quot;new_cool_feature&quot;</code></p>
+<pre><code>git checkout -b &quot;new_cool_feature&quot;</code></pre>
 <p>tapety tap tap tap ... code ... code ... code ... tapety tap tap ... add a search engine ...</p>
-<p><code>git push origin &quot;new_cool_feature&quot;</code></p>
+<pre><code>git push origin &quot;new_cool_feature&quot;</code></pre>
 </section>
 <section id="like-http-git-can-be-a-protocol" class="slide level1">
 <h1>Like HTTP Git can be a protocol</h1>
@@ -317,8 +318,9 @@ Location: https://eu1.c-g.io/activity/xxxxxxxxxxx</code></pre>
   <video  width="320" height="240" id="bgvid"> <source src="cat.webm"></video>
 <script>
 window.setTimeout(function() {
-var v = document.getElementsByTagName("video")[0];v.play();}, 30000);
+var v = document.getElementsByTagName("video")[0];v.play();}, 60000);
 Reveal.addEventListener( 'slidechanged', function( event ) {
+if (window.self == window.top){
 var ps = document.querySelectorAll('.future p'), i;
 for (i = 0; i < ps.length; ++i) {
   ps[i].classList.remove("hide");
@@ -334,6 +336,7 @@ for (i = 0; i < ps.length; ++i) {
 var ps = document.querySelectorAll('.past p'), i;
 for (i = 0; i < ps.length; ++i) {
   ps[i].classList.remove("hide");
+	}
 	}
 } );
 

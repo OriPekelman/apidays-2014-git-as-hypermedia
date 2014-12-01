@@ -46,7 +46,8 @@ $endif$
 $for(header-includes)$
     $header-includes$
 $endfor$
-<style> body{#background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: 0; background: transparent url() no-repeat;background-size: cover; } .reveal h1 {font-size: 2.77em; z-index:999} .reveal p { z-index:-999}  .reveal .slides {text-align: left !important;}</style>
+<style> body{#background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: 0; background: transparent url() no-repeat;background-size: cover; } .reveal h1 {font-size: 2.77em; z-index:999} .reveal pre, .reveal code {font-size:100%; line-height:100%} 
+ .reveal p { z-index:-999}  .reveal .slides {text-align: left !important;} .show {  visibility: visible !important;  opacity: 0.9 !important;  transition: visibility 0s 4s, opacity 4s linear !important;} .hide {opacity: 0 !important;  transition: visibility 4s 7s, opacity 5s linear !important;}</style>
 </head>
 <body>
 $for(include-before)$
@@ -109,8 +110,24 @@ $body$
 <script>
 window.setTimeout(function() {
 var v = document.getElementsByTagName("video")[0];v.play();}, 30000);
-
-
+Reveal.addEventListener( 'slidechanged', function( event ) {
+var ps = document.querySelectorAll('.future p'), i;
+for (i = 0; i < ps.length; ++i) {
+  ps[i].classList.remove("hide");
+	};
+var ps = document.querySelectorAll('.present p'), i;
+for (i = 0; i < ps.length; ++i) {
+  ps[i].classList.add("hide");
+	}
+	var ps = document.querySelectorAll('.present pre, .present code'), i;
+	for (i = 0; i < ps.length; ++i) {
+	  ps[i].classList.add("show");
+		}
+var ps = document.querySelectorAll('.past p'), i;
+for (i = 0; i < ps.length; ++i) {
+  ps[i].classList.remove("hide");
+	}
+} );
 
 </script>
   </body>

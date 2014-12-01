@@ -1,7 +1,10 @@
 % Platform.sh Git (and/as) Hypermedia
 % Ori Pekelman
 % APIDays Global, Paris, Dec 4th 2014
-Hello, I am Ori Pekelman, everywhere @OriPekelman I consult companies on their software strategy. I co-organize #ParisDataGeeks and #FunctionalProgrammersParis and I am before you today as one of the co-founders of Commerce Guys that created #platformsh
+###Hello, I am Ori Pekelman, everywhere **@OriPekelman** 
+I consult companies on their software strategy. I co-organize #ParisDataGeeks and #FunctionalProgrammersParis and 
+
+####I am before you today as one of the co-founders of Commerce Guys that created #platformsh
 
 #Silver Shoes
 
@@ -13,7 +16,7 @@ If you haven't caught up yet its about:
 Affordance (discoverability), Developer Experience, Reducing Client maintenance cost, Reducing migration headaches.. so its good and we should always use it for everything? We'll see about that.
 
 #HTTP as defined in Wikipedia
-The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems.
+    The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems.
 
 Now this doesn't look at all like whatever we are doing right now, right? When we say do APIs and we, say, create JSON over HTTP interfaces (JSON being not extremely hypertext friendly as a specification.... )  we are miles away from the definition of HTTP or even its design goals
 
@@ -34,23 +37,23 @@ Think about how many times you were yelled at by an API expert/evangelist becaus
 APIs need to bridge gaps between the semantics of two different systems. When we use a middleware representation such as JSON over HTTP it means the semantics are translated twice. So what is usually means is the following conversation :
 
 #Lost in translation APP1 -->API-->APP2
-Reading would be:
+    Reading would be:
+      World View 1 --> World View 1 as represented as
+      Json over HTTP --> World View 1 as represented in World View 2 
+    And writing would be:
+      World View 2 --> World View 2 as represented as
+      Json over HTTP --> World View 2 as represented in World View 1
 
-    World View 1 --> World View 1 as represented as Json over HTTP --> World View 1 as represented in World View 2 
-And writing would be:
-
-    World View 2 --> World View 2 as represented as Json over HTTP --> World View 2 as represented in World View 1
 # The 'Ol double google translate trick
-Now lets do the trick to pass the preceding slide twice through google translate (English->French->English) which gives us:
+####Now lets do the trick to pass the preceding slide twice through google translate (English->French->English) which gives us:
 
 #Lost in translation EN-->FR-->EN
-Reading will be:
-
-      View in 1 -> World View 1 as represented as JSON over HTTP -> World View 1 as represented in View 2
-Will wrote:
-
-      View the world 2 -> World View 2 as represented about JSON HTTP -> World View 2 as represented in View 1
-
+    Reading would be:
+      World View 1 -> World View as represented as
+      a Json over HTTP -> World View one as represented in the world View 2
+    And writing would be:
+      World View 2 -> World View 2 as shown as
+      Json over HTTP -> World View 2 as shown in the world View 1
 
 Not bad at all right? we have some type issues (1 became One, an instance became a class World View 2 to World View etc..). In our case French 
 served as the intermediary representation. 
@@ -58,11 +61,12 @@ served as the intermediary representation.
 **Now lets use the same trick with Hebrew!**
 
 #Lost in translation EN-->HE-->EN
-
-    View in 1 -> World View 1 as represented as JSON over HTTP -> World View 1 as represented in View 2
-And
-
-    View the world 2 -> World View 2 as represented about JSON HTTP -> World View 2 as represented in View 1
+    Reading will be:
+      View in 1 -> World View 1 as represented as
+      JSON over HTTP -> World View 1 as represented in View 2
+    Will wrote:
+      View the world 2 -> World View 2 as
+      represented about JSON HTTP -> World View 2 as represented in View 1
 
 Well here we are totally broken right? this is not going to work. The semantics of the intermediary system matter. It represents the total Impedance of the system (you know the function over reactance and resistance).
 
@@ -105,7 +109,7 @@ But Git semantics, for this, are really really great; We want a system with this
 #The platform.sh Git API
 So in http://platform.sh the API is git. And everything is represented in git concepts.
 
-When you do in http://platform.sh 
+###When you do in http://platform.sh 
 
 `git checkout -b "new_cool_feature"`
 
@@ -141,6 +145,8 @@ So of course we also expose a Hypermedia API. It represents precisely the same t
 
 #How does the Hypermedia look like here?
 We try to apply the "principle of least surprise and maximum immediate joy". So `GET https://eu.platform.sh/api/projects` will give you in a single request the list of your projects, with all the data you need, and the next steps you can take in a convenient bundle.
+
+      GET https://eu.platform.sh/api/projects
 
     
     [{
@@ -206,6 +212,7 @@ The activity resource will be polled by the client (or watched through Event Sou
         }
     }
 
+---
 At the end of the processing, the activity will be updated with either a failure state::
 
     {
@@ -223,6 +230,7 @@ At the end of the processing, the activity will be updated with either a failure
             }
         }
     }
+
 
 or a success state::
 

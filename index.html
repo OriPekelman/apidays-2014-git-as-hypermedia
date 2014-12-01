@@ -24,7 +24,8 @@
     <!--[if lt IE 9]>
     <script src="reveal.js/lib/js/html5shiv.js"></script>
     <![endif]-->
-<style> body{#background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: 0; background: transparent url() no-repeat;background-size: cover; } .reveal h1 {font-size: 2.77em; z-index:999} .reveal p { z-index:-999}  .reveal .slides {text-align: left !important;}</style>
+<style> body{#background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: 0; background: transparent url() no-repeat;background-size: cover; } .reveal h1 {font-size: 2.77em; z-index:999} .reveal pre, .reveal code {font-size:100%; line-height:100%} 
+ .reveal p { z-index:-999}  .reveal .slides {text-align: left !important;} .show {  visibility: visible !important;  opacity: 0.9 !important;  transition: visibility 0s 4s, opacity 4s linear !important;} .hide {opacity: 0 !important;  transition: visibility 4s 7s, opacity 5s linear !important;}</style>
 </head>
 <body>
   <div class="reveal">
@@ -38,7 +39,9 @@
 
 <section class="slide level1">
 
-<p>Hello, I am Ori Pekelman, everywhere <span class="citation" data-cites="OriPekelman">@OriPekelman</span> I consult companies on their software strategy. I co-organize #ParisDataGeeks and #FunctionalProgrammersParis and I am before you today as one of the co-founders of Commerce Guys that created #platformsh</p>
+<h3 id="hello-i-am-ori-pekelman-everywhere-oripekelman">Hello, I am Ori Pekelman, everywhere <strong><span class="citation" data-cites="OriPekelman">@OriPekelman</span></strong></h3>
+<p>I consult companies on their software strategy. I co-organize #ParisDataGeeks and #FunctionalProgrammersParis and</p>
+<h4 id="i-am-before-you-today-as-one-of-the-co-founders-of-commerce-guys-that-created-platformsh">I am before you today as one of the co-founders of Commerce Guys that created #platformsh</h4>
 </section>
 <section id="silver-shoes" class="slide level1">
 <h1>Silver Shoes</h1>
@@ -48,7 +51,7 @@
 </section>
 <section id="http-as-defined-in-wikipedia" class="slide level1">
 <h1>HTTP as defined in Wikipedia</h1>
-<p>The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems.</p>
+<pre><code>The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems.</code></pre>
 <p>Now this doesn't look at all like whatever we are doing right now, right? When we say do APIs and we, say, create JSON over HTTP interfaces (JSON being not extremely hypertext friendly as a specification.... ) we are miles away from the definition of HTTP or even its design goals</p>
 </section>
 <section id="so-what-are-these-api-things-theyre-talking-about" class="slide level1">
@@ -73,27 +76,36 @@
 </section>
 <section id="lost-in-translation-app1---api--app2" class="slide level1">
 <h1>Lost in translation APP1 --&gt;API--&gt;APP2</h1>
-<p>Reading would be:</p>
-<pre><code>World View 1 --&gt; World View 1 as represented as Json over HTTP --&gt; World View 1 as represented in World View 2 </code></pre>
-<p>And writing would be:</p>
-<pre><code>World View 2 --&gt; World View 2 as represented as Json over HTTP --&gt; World View 2 as represented in World View 1</code></pre>
+<pre><code>Reading would be:
+  World View 1 --&gt; World View 1 as represented as
+  Json over HTTP --&gt; World View 1 as represented in World View 2 
+And writing would be:
+  World View 2 --&gt; World View 2 as represented as
+  Json over HTTP --&gt; World View 2 as represented in World View 1</code></pre>
 </section>
 <section id="the-ol-double-google-translate-trick" class="slide level1">
 <h1>The 'Ol double google translate trick</h1>
-<p>Now lets do the trick to pass the preceding slide twice through google translate (English-&gt;French-&gt;English) which gives us:</p>
+<h4 id="now-lets-do-the-trick-to-pass-the-preceding-slide-twice-through-google-translate-english-french-english-which-gives-us">Now lets do the trick to pass the preceding slide twice through google translate (English-&gt;French-&gt;English) which gives us:</h4>
 </section>
 <section id="lost-in-translation-en--fr--en" class="slide level1">
 <h1>Lost in translation EN--&gt;FR--&gt;EN</h1>
-<p>Reading will be:</p>
-<pre><code>  View in 1 -&gt; World View 1 as represented as JSON over HTTP -&gt; World View 1 as represented in View 2</code></pre>
-<p>Will wrote:</p>
-<pre><code>  View the world 2 -&gt; World View 2 as represented about JSON HTTP -&gt; World View 2 as represented in View 1</code></pre>
+<pre><code>Reading would be:
+  World View 1 -&gt; World View as represented as
+  a Json over HTTP -&gt; World View one as represented in the world View 2
+And writing would be:
+  World View 2 -&gt; World View 2 as shown as
+  Json over HTTP -&gt; World View 2 as shown in the world View 1</code></pre>
 <p>Not bad at all right? we have some type issues (1 became One, an instance became a class World View 2 to World View etc..). In our case French served as the intermediary representation.</p>
 <p><strong>Now lets use the same trick with Hebrew!</strong></p>
 </section>
 <section id="lost-in-translation-en--he--en" class="slide level1">
 <h1>Lost in translation EN--&gt;HE--&gt;EN</h1>
-<p>View in 1 -&gt; World View 1 as represented as JSON over HTTP -&gt; World View 1 as represented in View 2 And View the world 2 -&gt; World View 2 as represented about JSON HTTP -&gt; World View 2 as represented in View 1</p>
+<pre><code>Reading will be:
+  View in 1 -&gt; World View 1 as represented as
+  JSON over HTTP -&gt; World View 1 as represented in View 2
+Will wrote:
+  View the world 2 -&gt; World View 2 as
+  represented about JSON HTTP -&gt; World View 2 as represented in View 1</code></pre>
 <p>Well here we are totally broken right? this is not going to work. The semantics of the intermediary system matter. It represents the total Impedance of the system (you know the function over reactance and resistance).</p>
 </section>
 <section id="what-is-a-thing" class="slide level1">
@@ -136,7 +148,7 @@
 <section id="the-platform.sh-git-api" class="slide level1">
 <h1>The platform.sh Git API</h1>
 <p>So in http://platform.sh the API is git. And everything is represented in git concepts.</p>
-<p>When you do in http://platform.sh</p>
+<h3 id="when-you-do-in-httpplatform.sh">When you do in http://platform.sh</h3>
 <p><code>git checkout -b &quot;new_cool_feature&quot;</code></p>
 <p>tapety tap tap tap ... code ... code ... code ... tapety tap tap ... add a search engine ...</p>
 <p><code>git push origin &quot;new_cool_feature&quot;</code></p>
@@ -171,7 +183,10 @@
 <section id="how-does-the-hypermedia-look-like-here" class="slide level1">
 <h1>How does the Hypermedia look like here?</h1>
 <p>We try to apply the &quot;principle of least surprise and maximum immediate joy&quot;. So <code>GET https://eu.platform.sh/api/projects</code> will give you in a single request the list of your projects, with all the data you need, and the next steps you can take in a convenient bundle.</p>
-<pre><code>[{
+<pre><code>  GET https://eu.platform.sh/api/projects
+
+
+[{
     &quot;id&quot;: &quot;jrq5lx44wtatm&quot;,
     &quot;_links&quot;: { 
                 &quot;self&quot;:  { &quot;href&quot;: &quot;/api/projects/jrq5lx44wtatm&quot;},
@@ -229,6 +244,9 @@ Location: https://eu1.c-g.io/activity/xxxxxxxxxxx</code></pre>
         &quot;progress&quot;: 8
     }
 }</code></pre>
+</section>
+<section class="slide level1">
+
 <p>At the end of the processing, the activity will be updated with either a failure state::</p>
 <pre><code>{
     // [...]
@@ -300,8 +318,24 @@ Location: https://eu1.c-g.io/activity/xxxxxxxxxxx</code></pre>
 <script>
 window.setTimeout(function() {
 var v = document.getElementsByTagName("video")[0];v.play();}, 30000);
-
-
+Reveal.addEventListener( 'slidechanged', function( event ) {
+var ps = document.querySelectorAll('.future p'), i;
+for (i = 0; i < ps.length; ++i) {
+  ps[i].classList.remove("hide");
+	};
+var ps = document.querySelectorAll('.present p'), i;
+for (i = 0; i < ps.length; ++i) {
+  ps[i].classList.add("hide");
+	}
+	var ps = document.querySelectorAll('.present pre, .present code'), i;
+	for (i = 0; i < ps.length; ++i) {
+	  ps[i].classList.add("show");
+		}
+var ps = document.querySelectorAll('.past p'), i;
+for (i = 0; i < ps.length; ++i) {
+  ps[i].classList.remove("hide");
+	}
+} );
 
 </script>
   </body>

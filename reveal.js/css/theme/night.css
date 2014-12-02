@@ -134,3 +134,5 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: #e7ad52; }
+#logo {position:fixed; left:8px; top:8px;z-index:9999; opacity: 0 !important;  transition:  opacity 240s linear !important;}
+#logo2 {border:0px; }

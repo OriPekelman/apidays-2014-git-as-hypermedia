@@ -251,6 +251,12 @@ or a success state::
         }
     }
 #NUFF' Talk Show Us!
+
+
+##http://platform.sh 
+
+<img src="platform-logo-on-black.png" title ="platform.sh logo" id="logo2"> 
+
 Let's see this in action. <Simple Demo, where we push a commit an see stuff happening on UI in realtime>
   
 So... think well on the semantics of your API, default to REST/hypermedia, but if needed don't be ashamed to leverage other protocols and technologies with a specific API... later when you wrap it in a REST one.. the design of this one ... will be much, much better. 

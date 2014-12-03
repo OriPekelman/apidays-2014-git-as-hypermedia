@@ -16,8 +16,9 @@ If you haven't caught up yet its about:
 Affordance (discoverability), Developer Experience, Reducing Client maintenance cost, Reducing migration headaches.. so its good and we should always use it for everything? We'll see about that.
 
 #HTTP as defined in Wikipedia
-    The Hypertext Transfer Protocol (HTTP) is an application protocol
-    for distributed, collaborative, hypermedia information systems.
+    The Hypertext Transfer Protocol (HTTP) is an application
+    protocol for distributed, collaborative, hypermedia
+    information systems.
 
 Now this doesn't look at all like whatever we are doing right now, right? When we say do APIs and we, say, create JSON over HTTP interfaces (JSON being not extremely hypertext friendly as a specification.... )  we are miles away from the definition of HTTP or even its design goals
 
@@ -48,13 +49,14 @@ APIs need to bridge gaps between the semantics of two different systems. When we
 # The 'Ol double google translate trick
 ####Now lets do the trick to pass the preceding slide twice through google translate (English->French->English) which gives us:
 
-#Lost in translation EN-->FR-->EN
+#Lost in translation EN-->YI-->EN
+
     Reading would be:
-      World View 1 -> World View as represented as
-      a Json over HTTP -> World View one as represented in the world View 2
-    And writing would be:
-      World View 2 -> World View 2 as shown as
-      Json over HTTP -> World View 2 as shown in the world View 1
+        World View 1 -> World View 1 as represented as
+        JSON over HTTP -> World View 1 as represented in World View 2
+      And writing would be:
+        World View 2 -> World View 2 as represented as
+        JSON over HTTP -> World View 2 as represented in World View 1
 
 Not bad at all right? we have some type issues (1 became One, an instance became a class World View 2 to World View etc..). In our case French 
 served as the intermediary representation. 
@@ -120,7 +122,7 @@ tapety tap tap tap ... code ... code ... code ... tapety tap tap ... add a searc
 
 #Like HTTP Git  can be a protocol
 
-You just used the git protocol, but precisely like with an HTTP API where when you do a "PUT" you are not PUTTING a file on a static WEBDAV server, but manipulating calling a function on an application server, invoking a method with specific semantics, here you will be talking to an application server (which is a highly consistent distributed Pythonian object framework) and telling it "I want to clone an existing infrastructure apply a set of changes and create a new one with just these changes".
+You just used the git protocol, but precisely like with an HTTP API where when you do a "PUT" you are not PUTTING a file on a static WEBDAV server, but manipulating calling a function on an application server, invoking a method with specific semantics, here you will be talking to an application server (which is a highly consistent distributed Pythonian object framework) and telling it "I want to clone an existing infrastructure apply a set of changes and create a new one with just these changes". Antd BTW git does speak HTTP and in an interesting "hypermediaish" way.. there is the "dumb" protocol that goes to the well known "info/refs" and than just follows links... But we really dont want to bind a web page to that or try to use higher level semantics with lists of commits...
 
 #Clone.. your infrastructure
 So platform.sh will do just that; It will take the running application cluster, get a state representation of every single element in it (again represented as a hash of its content), and create a new application cluster with just the changes (basically mutating just the tree of references to these objects known by their content). Because of this, because everything that is the "same" stays the same, this operation is incredibly fast; We can clone a running application, composed of multiple machines,  with its databases and caches and what not, in under 30 seconds.

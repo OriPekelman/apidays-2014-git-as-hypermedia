@@ -47,7 +47,7 @@ APIs need to bridge gaps between the semantics of two different systems. When we
       Json over HTTP --> World View 2 as represented in World View 1
 
 # The 'Ol double google translate trick
-####Now lets do the trick to pass the preceding slide twice through google translate (English->French->English) which gives us:
+####Now lets do the trick to pass the preceding slide twice through google translate (English->Yiddish->English) which gives us:
 
 #Lost in translation EN-->YI-->EN
 

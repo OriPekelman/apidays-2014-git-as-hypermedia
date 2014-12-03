@@ -110,7 +110,7 @@ $body$
 <video  width="320" height="240" id="bgvid"> <source src="cat.webm"></video>
 <script>
 window.setTimeout(function() {
-var v = document.getElementsByTagName("video")[0];v.play();}, 60000);
+var v = document.getElementsByTagName("video")[0];v.play();}, 120000);
 Reveal.addEventListener( 'slidechanged', function( event ) {
 if (window.self == window.top){
 var ps = document.querySelectorAll('.future p'), i;

@@ -52,8 +52,9 @@
 </section>
 <section id="http-as-defined-in-wikipedia" class="slide level1">
 <h1>HTTP as defined in Wikipedia</h1>
-<pre><code>The Hypertext Transfer Protocol (HTTP) is an application protocol
-for distributed, collaborative, hypermedia information systems.</code></pre>
+<pre><code>The Hypertext Transfer Protocol (HTTP) is an application
+protocol for distributed, collaborative, hypermedia
+information systems.</code></pre>
 <p>Now this doesn't look at all like whatever we are doing right now, right? When we say do APIs and we, say, create JSON over HTTP interfaces (JSON being not extremely hypertext friendly as a specification.... ) we are miles away from the definition of HTTP or even its design goals</p>
 </section>
 <section id="so-what-are-these-api-things-theyre-talking-about" class="slide level1">
@@ -89,14 +90,14 @@ And writing would be:
 <h1>The 'Ol double google translate trick</h1>
 <h4 id="now-lets-do-the-trick-to-pass-the-preceding-slide-twice-through-google-translate-english-french-english-which-gives-us">Now lets do the trick to pass the preceding slide twice through google translate (English-&gt;French-&gt;English) which gives us:</h4>
 </section>
-<section id="lost-in-translation-en--fr--en" class="slide level1">
-<h1>Lost in translation EN--&gt;FR--&gt;EN</h1>
+<section id="lost-in-translation-en--yi--en" class="slide level1">
+<h1>Lost in translation EN--&gt;YI--&gt;EN</h1>
 <pre><code>Reading would be:
-  World View 1 -&gt; World View as represented as
-  a Json over HTTP -&gt; World View one as represented in the world View 2
-And writing would be:
-  World View 2 -&gt; World View 2 as shown as
-  Json over HTTP -&gt; World View 2 as shown in the world View 1</code></pre>
+    World View 1 -&gt; World View 1 as represented as
+    JSON over HTTP -&gt; World View 1 as represented in World View 2
+  And writing would be:
+    World View 2 -&gt; World View 2 as represented as
+    JSON over HTTP -&gt; World View 2 as represented in World View 1</code></pre>
 <p>Not bad at all right? we have some type issues (1 became One, an instance became a class World View 2 to World View etc..). In our case French served as the intermediary representation.</p>
 <p><strong>Now lets use the same trick with Hebrew!</strong></p>
 </section>
@@ -157,7 +158,7 @@ Will wrote:
 </section>
 <section id="like-http-git-can-be-a-protocol" class="slide level1">
 <h1>Like HTTP Git can be a protocol</h1>
-<p>You just used the git protocol, but precisely like with an HTTP API where when you do a &quot;PUT&quot; you are not PUTTING a file on a static WEBDAV server, but manipulating calling a function on an application server, invoking a method with specific semantics, here you will be talking to an application server (which is a highly consistent distributed Pythonian object framework) and telling it &quot;I want to clone an existing infrastructure apply a set of changes and create a new one with just these changes&quot;.</p>
+<p>You just used the git protocol, but precisely like with an HTTP API where when you do a &quot;PUT&quot; you are not PUTTING a file on a static WEBDAV server, but manipulating calling a function on an application server, invoking a method with specific semantics, here you will be talking to an application server (which is a highly consistent distributed Pythonian object framework) and telling it &quot;I want to clone an existing infrastructure apply a set of changes and create a new one with just these changes&quot;. Antd BTW git does speak HTTP and in an interesting &quot;hypermediaish&quot; way.. there is the &quot;dumb&quot; protocol that goes to the well known &quot;info/refs&quot; and than just follows links... But we really dont want to bind a web page to that or try to use higher level semantics with lists of commits...</p>
 </section>
 <section id="clone..-your-infrastructure" class="slide level1">
 <h1>Clone.. your infrastructure</h1>
@@ -321,7 +322,7 @@ Location: https://eu1.c-g.io/activity/xxxxxxxxxxx</code></pre>
   <video  width="320" height="240" id="bgvid"> <source src="cat.webm"></video>
 <script>
 window.setTimeout(function() {
-var v = document.getElementsByTagName("video")[0];v.play();}, 60000);
+var v = document.getElementsByTagName("video")[0];v.play();}, 120000);
 Reveal.addEventListener( 'slidechanged', function( event ) {
 if (window.self == window.top){
 var ps = document.querySelectorAll('.future p'), i;

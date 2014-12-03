@@ -109,10 +109,13 @@ $body$
   $endfor$
 <video  width="320" height="240" id="bgvid"> <source src="cat.webm"></video>
 <script>
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 window.setTimeout(function() {
-var v = document.getElementsByTagName("video")[0];v.play();}, 120000);
+var v = document.getElementsByTagName("video")[0];v.play();}, getRandomInt(30000, 240000));
 Reveal.addEventListener( 'slidechanged', function( event ) {
-if (window.self == window.top){
+if (false && window.self == window.top){
 var ps = document.querySelectorAll('.future p'), i;
 for (i = 0; i < ps.length; ++i) {
   ps[i].classList.remove("hide");

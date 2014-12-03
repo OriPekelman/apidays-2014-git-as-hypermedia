@@ -113,7 +113,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 window.setTimeout(function() {
-var v = document.getElementsByTagName("video")[0];v.play();}, getRandomInt(30000, 240000));
+var v = document.getElementsByTagName("video")[0];v.play();}, getRandomInt(10000, 30000));
 Reveal.addEventListener( 'slidechanged', function( event ) {
 if (false && window.self == window.top){
 var ps = document.querySelectorAll('.future p'), i;

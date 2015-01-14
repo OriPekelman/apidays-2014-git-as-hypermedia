@@ -25,8 +25,12 @@
     <script src="reveal.js/lib/js/html5shiv.js"></script>
     <![endif]-->
 <style> body{#background: none !important;}video#bgvid { position: fixed; right: 0; bottom: 0;min-width: 100%;min-height: 100%;width: auto; height: auto; z-index: 0; background: transparent url() no-repeat;background-size: cover; } .reveal h1 {font-size: 2.77em; z-index:999} .reveal pre, .reveal code {font-size:100%; line-height:100%} 
+<<<<<<< HEAD
  .reveal p { z-index:-999}  .reveal .slides {text-align: left !important;} .show {  visibility: visible !important;  opacity: 0.9 !important;  transition: visibility 0s 4s, opacity 4s linear !important;} .hide {opacity: 0 !important;  transition: visibility 4s 7s, opacity 5s linear !important;} #current-slide .hide {opacity: 1 !important; }</style>
  <link rel="stylesheet" href="demo.css">
+=======
+ .reveal p { z-index:-999}  .reveal .slides {text-align: left !important;} .show {  visibility: visible !important;  opacity: 0.9 !important;  transition: visibility 0s 4s, opacity 4s linear !important;} /*.hide {opacity: 0 !important;  transition: visibility 4s 7s, opacity 5s linear !important;} #current-slide .hide {opacity: 1 !important; }*/</style>
+>>>>>>> master
 </head>
 <body>
 <img src="platform-logo-on-black.png" title ="platform.sh logo" id="logo">
@@ -89,7 +93,7 @@ And writing would be:
 </section>
 <section id="the-ol-double-google-translate-trick" class="slide level1">
 <h1>The 'Ol double google translate trick</h1>
-<h4 id="now-lets-do-the-trick-to-pass-the-preceding-slide-twice-through-google-translate-english-french-english-which-gives-us">Now lets do the trick to pass the preceding slide twice through google translate (English-&gt;French-&gt;English) which gives us:</h4>
+<h4 id="now-lets-do-the-trick-to-pass-the-preceding-slide-twice-through-google-translate-english-yiddish-english-which-gives-us">Now lets do the trick to pass the preceding slide twice through google translate (English-&gt;Yiddish-&gt;English) which gives us:</h4>
 </section>
 <section id="lost-in-translation-en--yi--en" class="slide level1">
 <h1>Lost in translation EN--&gt;YI--&gt;EN</h1>
@@ -322,10 +326,13 @@ Location: https://eu1.c-g.io/activity/xxxxxxxxxxx</code></pre>
     </script>
   <video  width="320" height="240" id="bgvid"> <source src="cat.webm"></video>
 <script>
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 window.setTimeout(function() {
-var v = document.getElementsByTagName("video")[0];v.play();}, 120000);
+var v = document.getElementsByTagName("video")[0];v.play();}, getRandomInt(10000, 30000));
 Reveal.addEventListener( 'slidechanged', function( event ) {
-if (window.self == window.top){
+if (false && window.self == window.top){
 var ps = document.querySelectorAll('.future p'), i;
 for (i = 0; i < ps.length; ++i) {
   ps[i].classList.remove("hide");
